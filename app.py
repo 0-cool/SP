@@ -12,7 +12,7 @@ def scrape_corotos(search):
             handleSIGINT=False,
             handleSIGTERM=False,
             handleSIGHUP=False,
-            headless=True,
+            headless=True, #Always rollback to TRUE before Git and FALSE to test locally.
             ignoreDefaultArgs=['--disable-extensions'],
             args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
         )
@@ -63,6 +63,10 @@ def scrape_corotos(search):
 @app.route('/', methods=['GET'])
 def home():
     return "Inicio" 
+
+@app.route('/api', methods=['GET'])
+def api():
+    return "Testing" 
 
 @app.route('/api/corotos/<search>', methods=['GET'])
 def corotos_api(search):
